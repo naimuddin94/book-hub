@@ -52,9 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // If we're using pagination, add the offset
       if (window.paginationService) {
-        const offset = window.paginationService.getOffset();
-        
+        params.page = window.paginationService.getCurrentPage(); 
       }
+
 
       try {
         const data = await window.apiService.getBooks(params);

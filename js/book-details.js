@@ -35,6 +35,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if book is in wishlist
     const isWishlisted = window.wishlistService.isInWishlist(book.id);
 
+    // Find available format
+    const formatEntries = Object.entries(book.formats);
+    const htmlFormat = formatEntries.find(([format]) =>
+      format.includes("html")
+    );
+    const pdfFormat = formatEntries.find(([format]) => format.includes("pdf"));
+
+    // Generate download links
+    let downloadOptionsHTML = "";
+
+    if (htmlFormat) {
+      // If HTML is available, show only that
+      downloadOptionsHTML = `<a href="${htmlFormat[1]}" class="btn btn-secondary" target="_blank">Read Online</a>`;
+    }
+
+    // Add PDF download button if a PDF is available
+    let pdfButtonHTML = "";
+    if (pdfFormat) {
+      pdfButtonHTML = `<a href="${pdfFormat[1]}" class="btn btn-primary" target="_blank">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                     </a>`;
+    }
+
     // Create HTML for book details
     const bookDetailsHTML = `
             <div class="book-details">
@@ -76,17 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
                 <div class="book-details-content">
-                    <h2>Download Options</h2>
                     <div class="book-download-options">
-                        ${Object.entries(book.formats)
-                          .filter(([format]) => !format.includes("image"))
-                          .map(([format, url]) => {
-                            const formatName = format
-                              .replace("application/", "")
-                              .replace("text/", "");
-                            return `<a href="${url}" class="btn btn-secondary" target="_blank">${formatName}</a>`;
-                          })
-                          .join("")}
+                        ${downloadOptionsHTML}
+                        ${pdfButtonHTML}
                     </div>
                 </div>
             </div>
