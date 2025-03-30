@@ -75,5 +75,5 @@ class ApiService {
   }
 }
 
-// Create a singleton instance and make it globally available
+
 window.apiService = new ApiService();
