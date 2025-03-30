@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wishlist - Gutendex Books Library</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <h1>BookHub</h1>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="wishlist.html" class="active">Wishlist</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="wishlist-header">
+        <h2>Your Wishlist</h2>
+        <p id="wishlist-count">0 books in your wishlist</p>
+      </section>
+
+      <section class="books-container" id="wishlist-container">
+        <!-- Wishlist books will be loaded here dynamically -->
+        <div id="empty-wishlist" class="empty-wishlist">
+          <p>Your wishlist is empty. Add some books from the home page!</p>
+          <a href="index.html" class="btn">Browse Books</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 BookHub - Gutendex API Project</p>
+    </footer>
+  </body>
+</html>
